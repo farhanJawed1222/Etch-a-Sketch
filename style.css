@@ -51,3 +51,12 @@
 .start__btn:active{
     transform: scale(95%);
 }
+
+footer a{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover{
+    color: black;
+}
