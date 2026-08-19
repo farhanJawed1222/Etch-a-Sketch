@@ -33,6 +33,7 @@
 
 .grid{
     border:1px solid #a8d5ba;
+    cursor: pointer;
 }
 
 .start__btn{
