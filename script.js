@@ -1,16 +1,15 @@
 // ---------------------------------------Reference----------------------------------------
 const grid_container = document.querySelector(".grid__container");
-const start_btn = document.querySelector(".start__btn");
+const grid_slider = document.querySelector(".grid__slider");
 const clean_btn = document.querySelector(".clean__btn");
 //-------------------------------------variable-------------------------------------------
-// initial grid cell in each side
-let currentSize = 50;
+
 //-------------------------------------function--------------------------------------------
 function getRandomColor(e) {
     let red = Math.floor(Math.random() * 256);
     let green = Math.floor(Math.random() * 256);
     let blue = Math.floor(Math.random() * 256);
-    e.target.style.background = `rgb(${red}, ${green}, ${blue})`
+    e.target.style.background = `rgb(${red}, ${green}, ${blue})`;
 }
 
 // building grids
@@ -30,8 +29,7 @@ function buildGrid(totalGrid) {
             grid.style.height = height + 'px';
             grid_container.appendChild(grid);
 
-            // add random color on each grid on hovering
-            grid.addEventListener("mouseover", getRandomColor);
+            grid.addEventListener("mouseenter", getRandomColor);
 
         }
     }
@@ -39,7 +37,7 @@ function buildGrid(totalGrid) {
 
 //function to  generate grid dynamically based on user input
 function sketchPad() {
-    let totalGrid = prompt("Total grid per side? (max 100)");
+    let totalGrid = grid_slider.value;
 
     totalGrid = Number(totalGrid);
 
@@ -48,17 +46,16 @@ function sketchPad() {
         alert("Enter number between 1 and 100");
         return;
     };
-    currentSize = totalGrid;
     buildGrid(totalGrid);
 }
 
 //add clean board function
 function cleanSketch() {
-    buildGrid(currentSize);
+    buildGrid(Number(grid_slider.value));
 }
 
 //--------------------------------Event Listener-----------------------------------------
-start_btn.addEventListener("click", sketchPad);
+grid_slider.addEventListener("change", sketchPad);
 clean_btn.addEventListener("click", cleanSketch);
 
-buildGrid(currentSize);
+buildGrid(Number(grid_slider.value));
