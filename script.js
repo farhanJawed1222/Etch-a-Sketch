@@ -10,12 +10,13 @@ function getRandomColor(e) {
     e.target.style.background = `rgb(${red}, ${green}, ${blue})`
 }
 
-//--------------------------------Event Listener-----------------------------------------
-start_btn.addEventListener("click", (e) => {
+//function to  generate grid dynamically based on user input
+function sketchPad() {
     let totalGrid = prompt("Total grid per side? (max 100)");
+    totalGrid = Number(totalGrid);
 
-    // check for number greater than 100
-    if (totalGrid < 1 || totalGrid > 100) {
+    // check for invalid or out-of-range input
+    if (!totalGrid || totalGrid < 1 || totalGrid > 100) {
         alert("Enter number between 1 and 100");
         return;
     };
@@ -40,5 +41,7 @@ start_btn.addEventListener("click", (e) => {
 
         }
     }
+}
 
-});
+//--------------------------------Event Listener-----------------------------------------
+start_btn.addEventListener("click", sketchPad);
