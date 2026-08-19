@@ -6,11 +6,12 @@
      font-family: 'Poppins', sans-serif;
 }
 
-body{
-    background-color:yellow;
+
+.sketch__wrapper{
+    min-height:50vh;
+     background-color:yellow;
     display:flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 .sketch__heading,
@@ -27,8 +28,7 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-color: rgb(254, 252, 252);
-    
+    background-color: rgb(254, 252, 252);    
 }
 
 .grid{
