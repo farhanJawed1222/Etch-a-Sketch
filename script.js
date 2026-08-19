@@ -29,8 +29,6 @@ function buildGrid(totalGrid) {
             grid.style.height = height + 'px';
             grid_container.appendChild(grid);
 
-            grid.addEventListener("mouseenter", getRandomColor);
-
         }
     }
 }
@@ -48,6 +46,13 @@ function sketchPad() {
 function cleanSketch() {
     buildGrid(Number(grid_slider.value));
 }
+
+// Add event listener on grid parent div - event delegation
+grid_container.addEventListener("mouseover", e => {
+    let isGridCell = e.target.classList.contains("grid");
+    if (!isGridCell) return
+    getRandomColor(e);
+});
 
 //--------------------------------Event Listener-----------------------------------------
 grid_slider.addEventListener("change", sketchPad);
