@@ -33,18 +33,26 @@
     cursor: pointer;
 }
 
-
-.start__btn{
+.start__container{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.start__btn,
+.clean__btn{
     display: block;
      width:100px;
-    padding:10px 30px;
+    padding:10px;
     font-weight: bold;
     color:rgb(244, 7, 46);
     background-color: pink;
     border: none;
     border-radius:5px;
     cursor: pointer;
+    font-size:10px;
+
 }
+
 
 .start__btn:active{
     transform: scale(95%);
