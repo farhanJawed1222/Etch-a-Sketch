@@ -60,11 +60,12 @@
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background:pink;
+    background: pink;
     border: 2px solid
 }
 
-.clean__btn {
+.clean__btn,
+.mode__btn {
     display: block;
     width: 100px;
     padding: 10px;
@@ -78,8 +79,8 @@
 
 }
 
-
-.clean__btn:active {
+.clean__btn:active,
+.mode__btn:active {
     transform: scale(95%);
 }
 
