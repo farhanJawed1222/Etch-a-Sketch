@@ -2,14 +2,20 @@
 const grid_container = document.querySelector(".grid__container");
 const grid_slider = document.querySelector(".grid__slider");
 const clean_btn = document.querySelector(".clean__btn");
+const mode_btn = document.querySelector(".mode__btn");
 //-------------------------------------variable-------------------------------------------
-
+let current_mode = "rainbow";
 //-------------------------------------function--------------------------------------------
 function getRandomColor(e) {
+    if(current_mode === "rainbow"){
     let red = Math.floor(Math.random() * 256);
     let green = Math.floor(Math.random() * 256);
     let blue = Math.floor(Math.random() * 256);
     e.target.style.background = `rgb(${red}, ${green}, ${blue})`;
+    }
+        else if(current_mode === "grey"){
+            e.target.style.background = "grey";
+        }
 }
 
 // building grids
@@ -34,7 +40,7 @@ function buildGrid(totalGrid) {
 }
 
 //function to  generate grid dynamically based on user input
-function sketchPad() {
+function updateGrid() {
     let totalGrid = grid_slider.value;
 
     totalGrid = Number(totalGrid);
@@ -47,6 +53,17 @@ function cleanSketch() {
     buildGrid(Number(grid_slider.value));
 }
 
+function toggleMode(){
+    if(current_mode === "rainbow"){
+        current_mode = "grey";
+        mode_btn.textContent = "Mode: Grey";
+    }
+    else{
+        current_mode = "rainbow"
+        mode_btn.textContent = "Mode: Rainbow";
+    }
+}
+
 // Add event listener on grid parent div - event delegation
 grid_container.addEventListener("mouseover", e => {
     let isGridCell = e.target.classList.contains("grid");
@@ -55,7 +72,8 @@ grid_container.addEventListener("mouseover", e => {
 });
 
 //--------------------------------Event Listener-----------------------------------------
-grid_slider.addEventListener("change", sketchPad);
+grid_slider.addEventListener("change", updateGrid);
 clean_btn.addEventListener("click", cleanSketch);
+mode_btn.addEventListener("click", toggleMode)
 
 buildGrid(Number(grid_slider.value));
