@@ -13,6 +13,8 @@ start_btn.addEventListener("click", (e) => {
         return;
     };
 
+    // clearing older grid 
+    grid_container.textContent = "";
     // dimension of each grid
     let width = 960 / totalGrid;
     let height = 960 / totalGrid;
