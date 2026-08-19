@@ -41,11 +41,6 @@ function sketchPad() {
 
     totalGrid = Number(totalGrid);
 
-    // check for invalid or out-of-range input
-    if (!totalGrid || totalGrid < 1 || totalGrid > 100) {
-        alert("Enter number between 1 and 100");
-        return;
-    };
     buildGrid(totalGrid);
 }
 
