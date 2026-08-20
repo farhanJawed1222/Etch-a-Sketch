@@ -3,7 +3,6 @@ const grid_container = document.querySelector(".grid__container");
 const grid_slider = document.querySelector(".grid__slider");
 const clean_btn = document.querySelector(".clean__btn");
 const mode_btn = document.querySelector(".mode__btn");
-const eraser_btn = document.querySelector(".eraser__btn");
 //-------------------------------------variable-------------------------------------------
 let current_mode = "rainbow";
 //-------------------------------------function--------------------------------------------
@@ -19,8 +18,8 @@ function setMode(e) {
         e.target.style.background = "grey";
     }
 
-    else if(current_mode === "erase"){
-        e.target.style.background = "" ;
+    else if (current_mode === "erase") {
+        e.target.style.background = "";
     }
 }
 
@@ -64,13 +63,16 @@ function toggleMode() {
         current_mode = "grey";
         mode_btn.textContent = "Mode: Grey";
     }
-    else {
-        current_mode = "rainbow"
+    else if (current_mode === "grey" ) {
+        current_mode = "erase"
+        mode_btn.textContent = "Mode: Eraser";
+    }
+
+    else if (current_mode === "erase"){
+        current_mode = "rainbow";
         mode_btn.textContent = "Mode: Rainbow";
     }
 }
-
-// Add event listener on grid parent div - event delegation
 
 
 //--------------------------------Event Listener-----------------------------------------
@@ -78,14 +80,11 @@ grid_slider.addEventListener("change", updateGrid);
 clean_btn.addEventListener("click", cleanSketch);
 mode_btn.addEventListener("click", toggleMode);
 
+// Add event listener on grid parent div - event delegation
 grid_container.addEventListener("mouseover", e => {
     let isGridCell = e.target.classList.contains("grid");
     if (!isGridCell) return
     setMode(e);
-});
-
-eraser_btn.addEventListener("click", () =>{
-    current_mode ="erase";
 });
 
 buildGrid(Number(grid_slider.value));
