@@ -80,7 +80,7 @@ function toggleMode() {
 
 
 //--------------------------------Event Listener-----------------------------------------
-grid_slider.addEventListener("change", updateGrid);
+grid_slider.addEventListener("input", updateGrid);
 clean_btn.addEventListener("click", cleanSketch);
 mode_btn.addEventListener("click", toggleMode);
 
