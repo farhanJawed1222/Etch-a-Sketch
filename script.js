@@ -1,3 +1,4 @@
+
 // ---------------------------------------Reference----------------------------------------
 const grid_container = document.querySelector(".grid__container");
 const grid_slider = document.querySelector(".grid__slider");
@@ -31,17 +32,20 @@ function buildGrid(totalGrid) {
     let width = 960 / totalGrid;
     let height = 960 / totalGrid;
 
-    //create a sketchpad of different grid size
-    for (let i = 0; i < totalGrid; i++) {
-        for (let j = 0; j < totalGrid; j++) {
-            let grid = document.createElement("div");
-            grid.classList.add("grid");
-            grid.style.width = width + 'px';
-            grid.style.height = height + 'px';
-            grid_container.appendChild(grid);
+    // 1. Create the invisible memory container
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < totalGrid * totalGrid; i++) {
+        let grid = document.createElement("div");
+        grid.classList.add("grid");
+        grid.style.width = width + 'px';
+        grid.style.height = height + 'px';
 
-        }
+        //2.Append to the memory fragment
+        fragment.appendChild(grid);
     }
+
+    // 3. Dump all cells into the live DOM in ONE step
+    grid_container.appendChild(fragment);
 }
 
 //function to  generate grid dynamically based on user input
@@ -63,12 +67,12 @@ function toggleMode() {
         current_mode = "grey";
         mode_btn.textContent = "Mode: Grey";
     }
-    else if (current_mode === "grey" ) {
+    else if (current_mode === "grey") {
         current_mode = "erase"
         mode_btn.textContent = "Mode: Eraser";
     }
 
-    else if (current_mode === "erase"){
+    else if (current_mode === "erase") {
         current_mode = "rainbow";
         mode_btn.textContent = "Mode: Rainbow";
     }
